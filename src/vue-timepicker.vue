@@ -16,7 +16,7 @@ export default {
     minuteInterval: {type: Number},
     secondInterval: {type: Number},
     id: {type: String},
-    limits: {type: Array}
+    limits: {type: Object}
   },
 
   data () {
