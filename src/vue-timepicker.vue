@@ -140,7 +140,7 @@ export default {
       const hoursCount = (this.hourType === 'h' || this.hourType === 'hh') ? 12 : 24
       this.hours = []
       if (hoursCount === 24) {
-        for (let i = this.limits ? this.limits.from : 0; i < this.limits ? hoursCount - this.limits.to : hoursCount; i++) {
+        for (let i = this.limits ? this.limits.from : 0; i < this.limits ? this.limits.from + this.limits.to : hoursCount; i++) {
           this.hours.push(this.formatValue(this.hourType, i))
         }
       } else {
