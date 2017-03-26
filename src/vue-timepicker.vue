@@ -15,7 +15,8 @@ export default {
     format: {type: String},
     minuteInterval: {type: Number},
     secondInterval: {type: Number},
-    id: {type: String}
+    id: {type: String},
+    limits: {type: Array}
   },
 
   data () {
@@ -138,8 +139,14 @@ export default {
     renderHoursList () {
       const hoursCount = (this.hourType === 'h' || this.hourType === 'hh') ? 12 : 24
       this.hours = []
-      for (let i = 0; i < hoursCount; i++) {
-        this.hours.push(this.formatValue(this.hourType, i))
+      if (hoursCount === 24) {
+        for (let i = this.limits ? this.limits.from.std : 0; i < this.limits ? hoursCount - this.limits.to.std - 1 : hoursCount; i++) {
+          this.hours.push(this.formatValue(this.hourType, i))
+        }
+      } else {
+        for (let i = 0; i < hoursCount; i++) {
+          this.hours.push(this.formatValue(this.hourType, i))
+        }
       }
     },
 
